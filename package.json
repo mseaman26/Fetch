@@ -4,7 +4,8 @@
   "description": "Compare dogs is a moderate size database",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "express-handlebars": "^6.0.6",
     "express-session": "^1.17.3",
     "mysql2": "^3.0.0-rc.1",
+    "nodemon": "^2.0.20",
     "path": "^0.12.7",
     "sequelize": "^6.25.4",
     "session": "^0.1.0",
