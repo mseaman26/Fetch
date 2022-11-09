@@ -6,7 +6,7 @@ router.post('/login', async (req, res) => {
     try{
         const currentUser = await User.findOne({
             where: {
-                name: req.body.name
+                email: req.body.email
             },
         }) 
         if (!currentUser){
@@ -22,11 +22,13 @@ router.post('/login', async (req, res) => {
         res.status(500).json(err)
     }
 })
+
+
 router.get("/", async (req, res) => {
   // find all users
   try {
     const userData = await User.findAll({
-      // add associations here
+      // add associations
       include: [{ model: Dogs }],
     });
     console.log(userData);
@@ -41,12 +43,12 @@ router.get("/:id", async (req, res) => {
   // find user by id
   try {
     const userData = await User.findByPk(req.params.id, {
-      // add associations here
+      // add associations
       include: [{ model: Dogs }],
     });
     console.log(userData);
     if (!userData) {
-      res.status(404).json({ message: "No user with this id" });
+      res.status(404).json({ message: "No user with this ID" });
       return;
     }
     res.status(200).json(userData);
