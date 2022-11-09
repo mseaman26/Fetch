@@ -10,13 +10,12 @@ const checkUserApi = async () => {
       }
     );
     const userData = await response.json();
-    console.log(typeof userData);
     const users = userData.results.map((element) => {
       return {
         first_name: element.name.first,
         last_name: element.name.last,
         password: element.login.password,
-        email: element.email,
+        email: element.email
       };
     });
 
@@ -24,16 +23,17 @@ const checkUserApi = async () => {
       first_name: "John",
       last_name: "Doe",
       password: "password",
-      email: "john.doe@example.com",
+      email: "john.doe@example.com"
     });
 
     users.push({
       first_name: "Jane",
       last_name: "Doe",
       password: "password",
-      email: "jane.doe@example.com",
+      email: "jane.doe@example.com"
     });
-
+    // console.log(typeof users);
+    // console.log(users);
     return users;
   } catch (err) {
     console.log(err);
@@ -41,8 +41,14 @@ const checkUserApi = async () => {
 };
 
 const seedUser = async () => {
-  const userData = checkUserApi();
-  User.bulkCreate(userData, { individualHooks: true });
+    try{
+        const userData = checkUserApi();
+        await User.bulkCreate(userData, { individualHooks: true });
+    }
+    catch(err){
+        console.log(err);
+    }
+  
 };
-// checkUserApi();
+checkUserApi();
 module.exports = seedUser;
