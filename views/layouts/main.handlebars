@@ -11,6 +11,7 @@
 </head>
 <body class="container">
     <a href="/">Home</a>
+    <a href="/signup"></a>
      {{#if loggedIn}}
         <a href='' id="logout">Logout</a>
         {{else}}
@@ -18,7 +19,7 @@
         {{/if}}
 
     {{{body}}}
-        {{{body}}}
+
     {{#if loggedIn}}
   <script src="/js/logout.js"></script>
     {{/if}}

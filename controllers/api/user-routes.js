@@ -6,7 +6,7 @@ router.post('/login', async (req, res) => {
     try{
         const currentUser = await User.findOne({
             where: {
-                name: req.body.name
+                email: req.body.email
             },
         }) 
         if (!currentUser){
@@ -22,6 +22,8 @@ router.post('/login', async (req, res) => {
         res.status(500).json(err)
     }
 })
+
+
 router.get("/", async (req, res) => {
   // find all users
   try {
