@@ -32,9 +32,15 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.post("/:winner", async (req, res) => {
+  // winner is selected by user
   try {
   } catch (err) {}
 });
 
+router.post("/:loser", async (req, res) => {
+  // loser is determined by user
+  try {
+  } catch (err) {}
+});
 module.exports = router;
