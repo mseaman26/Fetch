@@ -1,0 +1,32 @@
+{
+  "name": "fetch",
+  "version": "1.0.0",
+  "description": "Compare dogs is a moderate size database",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mseaman26/Fetch.git"
+  },
+  "author": "Philip Huang, Peter Miron, Daniel Packer, Michael Seaman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mseaman26/Fetch/issues"
+  },
+  "homepage": "https://github.com/mseaman26/Fetch#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "connect-session-sequelize": "^7.1.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6",
+    "express-session": "^1.17.3",
+    "mysql2": "^3.0.0-rc.1",
+    "path": "^0.12.7",
+    "sequelize": "^6.25.4",
+    "session": "^0.1.0",
+    "sqlite3": "^5.1.2"
+  }
+}
