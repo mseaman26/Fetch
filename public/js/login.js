@@ -1,9 +1,9 @@
 const loginFormHandler = async (event) => {
     event.preventDefault();
     console.log("log in button")
-    const username = document.querySelector('#username-login').value.trim();
-    const password = document.querySelector('#password-login').value.trim();
-  
+    const username = document.querySelector('#login-email').value.trim();
+    const password = document.querySelector('#login-password').value.trim();
+    console.log(username, password)
     if (username && password) {
       const response = await fetch('/api/users/login', {
         method: 'POST',
@@ -20,5 +20,5 @@ const loginFormHandler = async (event) => {
   };
 
   document
-  .querySelector('.custom-form-login')
-  .addEventListener('submit', loginFormHandler);
+  .querySelector('#log-in-button')
+  .addEventListener('click', loginFormHandler);
