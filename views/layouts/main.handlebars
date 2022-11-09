@@ -10,8 +10,17 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body class="container">
+    <a href="/">Home</a>
+     {{#if loggedIn}}
+        <a href='' id="logout">Logout</a>
+        {{else}}
+         <a href="/login">Login</a>
+        {{/if}}
 
     {{{body}}}
-
+        {{{body}}}
+    {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+    {{/if}}
 </body>
 </html>
