@@ -15,11 +15,14 @@
   </head>
   <body class="container">
     <a href="/">Home</a>
-    {{#if loggedIn}}
-      <a href="" id="logout">Logout</a>
-    {{else}}
-      <a href="/login">Login</a>
-    {{/if}}
+
+    <a href="/signup">Sign Up</a>
+    <br>
+     {{#if loggedIn}}
+        <a href='' id="logout">Logout</a>
+        {{else}}
+         <a href="/login">Login</a>
+        {{/if}}
 
     {{{body}}}
     

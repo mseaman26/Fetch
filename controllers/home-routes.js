@@ -24,12 +24,12 @@ router.get('/login', async (req, res) => {
 })
 module.exports = router
 //sign up page
-router.get('/login', async (req, res) => {
+router.get('/signup', async (req, res) => {
     try{
         res.render('signup')
     }catch(err){
         console.log(err)
         res.status(500).json(err)
     }
-    res.render('login')
+    res.render('signup')
 })
