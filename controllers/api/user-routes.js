@@ -22,6 +22,8 @@ router.post('/login', async (req, res) => {
         res.status(500).json(err)
     }
 })
+
+
 router.get("/", async (req, res) => {
   // find all users
   try {
