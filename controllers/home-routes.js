@@ -41,4 +41,15 @@ router.get('/signup', async (req, res) => {
     }
     
 })
+
+//favorites page
+router.get('/favorites', async (req, res) => {
+    try{
+        res.render('favorites')
+    }catch(err){
+        console.log(err)
+        res.status(500) 
+    }
+    
+})
 module.exports = router
