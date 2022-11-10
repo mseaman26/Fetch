@@ -1,13 +1,10 @@
 const User = require('./User');
 const Dogs = require('./Dogs');
+const Favorites = require('./Favorites');
 
-User.hasMany(Dogs, {
-  foreignKey: 'user_id',
-  onDelete: 'CASCADE'
-});
+User.belongsToMany(Dogs, { through: Favorites,});
 
-Dogs.belongsTo(User, {
-  foreignKey: 'user_id'
-});
+Dogs.belongsToMany(User, { through: Favorites,});
 
-module.exports = { User, Dogs };
+
+module.exports = { User, Dogs, Favorites };
