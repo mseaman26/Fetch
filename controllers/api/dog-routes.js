@@ -4,7 +4,7 @@ const { Dogs, User } = require("../../models");
 router.get("/", async (req, res) => {
   // find all dogs
   try {
-    const dogData = await Dog.findAll({
+    const dogData = await Dogs.findAll({
       // add associations here
     });
     console.log(dogData);
