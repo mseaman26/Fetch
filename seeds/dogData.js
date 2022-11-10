@@ -1,4 +1,4 @@
-const { User, Dogs } = require("../models");
+const {Dogs } = require("../models");
 const fetch = require("node-fetch");
 const dogNames = require('dog-names')
 
