@@ -23,6 +23,29 @@ router.post('/login', async (req, res) => {
     }
 })
 
+//signup
+router.post('/signup', async (req, res) => {
+  try{
+      const currentUser = await User.create({
+         email: req.body.email,
+         password: req.body.password,
+         first_name: req.body.first_name,
+         last_name: req.body.last_name
+      }) 
+      if (!currentUser){
+          res.status(404).json("Login Failed.  Incorrect username and/or password")
+          return
+      }
+      req.session.save(() => {
+          req.session.user_id = currentUser.id
+          req.session.loggedIn = true
+          res.status(200).json(currentUser)
+      })
+  }catch(err){
+    console.log(err)
+    res.status(500).json(err)
+  }
+})
 
 router.get("/", async (req, res) => {
   // find all users
@@ -54,6 +77,16 @@ router.get("/:id", async (req, res) => {
     res.status(200).json(userData);
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
   }
 });
 
