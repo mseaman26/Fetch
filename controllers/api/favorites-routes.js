@@ -1,12 +1,11 @@
 const router = require("express").Router();
-const { User, Dogs } = require("../../models");
+const { User, Dogs, Favorites } = require("../../models");
 const sequelize = require('../../config/connection')
 
 //localhost:3001/api/favorites/User/Favorites
 router.get("/User/Favorites", async (req, res) => {
-  console.log("I am in the route who")
   //create dummy data
-  await sequelize.sync();
+  await sequelize.sync({force: true});
   const user1 = await User.create(
     { first_name: 'Philip',
       last_name: 'Huang',
@@ -24,7 +23,21 @@ router.get("/User/Favorites", async (req, res) => {
     breed: 'Labrodoodle',
     rating: 1289
   })
-  await dog1.addUser(user1);
+
+//create association between users and dogs using .get
+
+
+  // await dog1.addUser(user1);
+  console.log(user1)
+  console.log(dog1);
+  console.log("create error")
+  // console.log(Dogs.getOwnPropertyNames(dog1).filter(item => typeof dog1[item] === 'function'))
+  // const favorite1 = await Favorites.create(
+  //   {dog_id: dog1.id,
+  //     user_id: user1.id,
+  //   }
+  // );
+  console.log("after err")
   // get all the dogs who this user favorites
   // req.session.user_id is this.id
   const dogData = await Dogs.findAll({
