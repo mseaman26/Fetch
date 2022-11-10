@@ -22,11 +22,11 @@ Dogs.init(
     rating: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        references: {
-            model: 'user',
-            key: 'id',
-          },
     },
+    url: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   },
   {
     sequelize,
@@ -38,5 +38,3 @@ Dogs.init(
 );
 
 module.exports = Dogs;
-
-console.log("adasdsadasasas")

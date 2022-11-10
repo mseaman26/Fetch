@@ -1,15 +1,17 @@
 const router = require("express").Router();
 const { Dogs, User } = require("../../models");
 
+
 router.get("/", async (req, res) => {
   // find all dogs
   try {
     const dogData = await Dogs.findAll({
-      // add associations here
+      // add associations
+      include: [{ model: User }],
     });
     console.log(dogData);
     res.status(200).json(dogData);
-    console.log();
+    console.log("stuff");
   } catch (err) {
     res.status(500).json(err);
   }
@@ -19,11 +21,12 @@ router.get("/:id", async (req, res) => {
   // find dog by id
   try {
     const dogData = await Dogs.findByPk(req.params.id, {
-      // add associations here
+      // add associations
+      include: [{ model: User }],
     });
     console.log(dogData);
     if (!dogData) {
-      res.status(404).json({ message: "No dog with this id" });
+      res.status(404).json({ message: "No dog with this ID" });
       return;
     }
     res.status(200).json(dogData);
@@ -32,15 +35,40 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/:winner", async (req, res) => {
+router.put("/:winners", async (req, res) => {
   // winner is selected by user
   try {
-  } catch (err) {}
+    const dogData = await Dogs.create(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (!dogData) {
+      res.status(404).json({ message: "No dog with this ID" });
+      return;
+    }
+    res.status(200).json(dogData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-router.post("/:loser", async (req, res) => {
-  // loser is determined by user
+router.put("/:losers", async (req, res) => {
+  // loser is determined by user's "winner" selection
   try {
-  } catch (err) {}
+    const dogData = await Dogs.create(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (!dogData) {
+      res.status(404).json({ message: "No dog with this ID" });
+      return;
+    }
+    res.status(200).json(dogData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
+
 module.exports = router;
