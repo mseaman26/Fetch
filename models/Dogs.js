@@ -23,6 +23,10 @@ Dogs.init(
         type: DataTypes.INTEGER,
         allowNull: false,
     },
+    url: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   },
   {
     sequelize,
@@ -34,3 +38,4 @@ Dogs.init(
 );
 
 module.exports = Dogs;
+
