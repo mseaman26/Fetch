@@ -18,7 +18,7 @@ router.get('/login', async (req, res) => {
         res.render('login')
     }catch(err){
         console.log(err)
-        res.status(500).json(err)
+        res.status(500)
     }
     res.render('login')
 })
@@ -37,7 +37,7 @@ router.get('/signup', async (req, res) => {
         res.render('signup')
     }catch(err){
         console.log(err)
-        res.status(500).json(err)
+        res.status(500) 
     }
     res.render('signup')
 })
