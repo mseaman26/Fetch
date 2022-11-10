@@ -8,7 +8,7 @@ const seedDogs = async() => {
         const users = userData.map((element)=>{
             return element.get({plain:true});
         })
-        console.log(users);
+        // console.log(users);
         const response = await fetch(
             "https://dog.ceo/api/breeds/image/random/50"
         )
