@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { User, Dogs, Favorites } = require("../../models");
 const sequelize = require('../../config/connection')
 
-//localhost:3001/api/favorites/User/Favorites
+//localhost:3001/api/favorites
 router.get("/", async (req, res) => {
   //create dummy data
   await sequelize.sync({force: true});
