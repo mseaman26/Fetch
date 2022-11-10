@@ -26,9 +26,6 @@ router.get("/User/Favorites", async (req, res) => {
 
 //create association between users and dogs using .get
 
-<<<<<<< HEAD
-module.exports = router;
-=======
 
   // await dog1.addUser(user1);
   console.log(user1)
@@ -61,4 +58,3 @@ module.exports = router;
 
 
 module.exports = router;
->>>>>>> d1a71eb1083a8d56934bd6ad1636d26799637cad
