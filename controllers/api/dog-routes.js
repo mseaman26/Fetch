@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   // find dog by id
   try {
-    const dogData = await Dog.findByPk(req.params.id, {
+    const dogData = await Dogs.findByPk(req.params.id, {
       // add associations here
     });
     console.log(dogData);
