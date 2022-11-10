@@ -20,7 +20,7 @@ router.get('/login', async (req, res) => {
         console.log(err)
         res.status(500)
     }
-    res.render('login')
+
 })
 // localhost:3001/leaderboard
 router.get('/leaderboard', async (req,res) =>{
@@ -39,6 +39,6 @@ router.get('/signup', async (req, res) => {
         console.log(err)
         res.status(500) 
     }
-    res.render('signup')
+    
 })
 module.exports = router
