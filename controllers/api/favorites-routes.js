@@ -23,6 +23,10 @@ router.get("/User/Favorites", async (req, res) => {
     breed: 'Labrodoodle',
     rating: 1289
   })
+
+//create association between users and dogs using .get
+
+
   // await dog1.addUser(user1);
   console.log(user1)
   console.log(dog1);
