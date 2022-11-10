@@ -29,8 +29,8 @@ router.post('/signup', async (req, res) => {
       const currentUser = await User.create({
          email: req.body.email,
          password: req.body.password,
-         first_name: first_name,
-         last_name: last_name
+         first_name: req.body.first_name,
+         last_name: req.body.last_name
       }) 
       if (!currentUser){
           res.status(404).json("Login Failed.  Incorrect username and/or password")
@@ -39,10 +39,11 @@ router.post('/signup', async (req, res) => {
       req.session.save(() => {
           req.session.user_id = currentUser.id
           req.session.loggedIn = true
-          res.status(200).json({message: "Login Successful!"})
+          res.status(200).json(currentUser)
       })
   }catch(err){
-      res.status(500).json(err)
+    console.log(err)
+    res.status(500).json(err)
   }
 })
 

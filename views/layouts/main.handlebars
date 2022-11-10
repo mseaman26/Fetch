@@ -14,20 +14,24 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
   </head>
   <body class="container">
-    <a href="/">Home</a>
+    <nav>
+      <a href="/" class="nav-anchor">Home</a>
 
-    <a href="/signup">Sign Up</a>
-    <br>
-     {{#if loggedIn}}
-        <a href='' id="logout">Logout</a>
-        {{else}}
-         <a href="/login">Login</a>
-        {{/if}}
+      <a href="/signup" class="nav-anchor">Sign Up</a>
+      
+      
+      {{#if loggedIn}}
+          <a href='' class="nav-anchor" id="logout">Logout</a>
+          {{else}}
+          <a href="/login" class="nav-anchor">Login</a>
+          {{/if}}
 
-    {{{body}}}
-    
-    {{#if loggedIn}}
-      <script src="/js/logout.js"></script>
-    {{/if}}
+      {{{body}}}
+      
+      {{#if loggedIn}}
+        <script src="/js/logout.js"></script>
+      {{/if}}
+      <a href="/leaderboard" class="nav-anchor">Leaderboard</a>
+    </nav>
   </body>
 </html>

@@ -22,7 +22,6 @@ router.get('/login', async (req, res) => {
     }
     res.render('login')
 })
-module.exports = router
 //sign up page
 router.get('/signup', async (req, res) => {
     try{
@@ -33,3 +32,4 @@ router.get('/signup', async (req, res) => {
     }
     res.render('signup')
 })
+module.exports = router
