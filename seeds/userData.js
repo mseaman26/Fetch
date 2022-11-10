@@ -33,7 +33,7 @@ const seedUser = async () => {
       email: "jane.doe@example.com",
     });
     // const userData = checkUserApi();
-    console.log(users);
+    // console.log(users);
     await User.bulkCreate(users, { individualHooks: true });
   } catch (err) {
     console.log(err);
