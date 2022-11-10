@@ -22,6 +22,15 @@ router.get('/login', async (req, res) => {
     }
     res.render('login')
 })
+
+router.get('/leaderboard', async (req,res) =>{
+    try{
+        res.render('leaderboard');
+
+    } catch(err){
+        res.json(err);
+    }
+})
 module.exports = router
 //sign up page
 router.get('/signup', async (req, res) => {
