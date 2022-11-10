@@ -38,3 +38,4 @@ Dogs.init(
 );
 
 module.exports = Dogs;
+

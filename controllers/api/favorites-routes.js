@@ -63,9 +63,11 @@ router.get("/", async (req, res) => {
       },
     ],
   });
-  res.status(200).json(dogData);
-});
 
+  console.log(favData);
+
+  res.send("test");
+});
 
 
 module.exports = router;
