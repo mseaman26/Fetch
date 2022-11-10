@@ -33,7 +33,7 @@ const checkUserApi = async () => {
       email: "jane.doe@example.com"
     });
     // console.log(typeof users);
-    // console.log(users);
+    console.log(users);
     return users;
   } catch (err) {
     console.log(err);
