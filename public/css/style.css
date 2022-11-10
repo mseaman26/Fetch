@@ -1,0 +1,12 @@
+nav{
+    display: flex;
+    color: yellow;
+    font-size: 40px;
+    height: 100px;
+    justify-content: space-around;
+    background-image: url('../assets/dog\ navbar\ background\ image.png');
+    
+}
+.nav-anchor{
+    color: rgb(0, 221, 255)
+}
