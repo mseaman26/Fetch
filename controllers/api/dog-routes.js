@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Dogs, User } = require("../../models");
-const { describe } = require("../../models/User");
+
 
 router.get("/", async (req, res) => {
   // find all dogs
@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
     });
     console.log(dogData);
     res.status(200).json(dogData);
-    console.log();
+    console.log("stuff");
   } catch (err) {
     res.status(500).json(err);
   }
