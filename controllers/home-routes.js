@@ -45,7 +45,7 @@ router.get('/signup', async (req, res) => {
 //favorites page
 router.get('/favorites', async (req, res) => {
     try{
-        res.render('favorites')
+        const dogs = await fetch('/api/favorites')
     }catch(err){
         console.log(err)
         res.status(500) 
