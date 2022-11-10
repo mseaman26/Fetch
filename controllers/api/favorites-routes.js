@@ -3,7 +3,7 @@ const { User, Dogs, Favorites } = require("../../models");
 const sequelize = require('../../config/connection')
 
 //localhost:3001/api/favorites/User/Favorites
-router.get("/User/Favorites", async (req, res) => {
+router.get("/", async (req, res) => {
   //create dummy data
   await sequelize.sync({force: true});
   const user1 = await User.create(
@@ -23,13 +23,29 @@ router.get("/User/Favorites", async (req, res) => {
     breed: 'Labrodoodle',
     rating: 1289
   })
+  const dog2 = await Dogs.create({
+    name: 'rufus',
+    breed: 'mutt',
+    rating: 10
+  })
+  const fav1 = await Favorites.create({
+    user_id: 1,
+    dog_id: 1
+  })
+  const fav2 = await Favorites.create({
+    user_id: 2,
+    dog_id: 1
+  })
+  const fav3 = await Favorites.create({
+    user_id: 1,
+    dog_id: 2
+  })
 
 //create association between users and dogs using .get
 
 
   // await dog1.addUser(user1);
-  console.log(user1)
-  console.log(dog1);
+
   console.log("create error")
   // console.log(Dogs.getOwnPropertyNames(dog1).filter(item => typeof dog1[item] === 'function'))
   // const favorite1 = await Favorites.create(
@@ -44,11 +60,6 @@ router.get("/User/Favorites", async (req, res) => {
     include: [
       {
         model: User,
-        through: {
-          where: {
-            user_id: 1,
-          },
-        },
       },
     ],
   });
