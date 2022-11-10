@@ -38,3 +38,5 @@ Dogs.init(
 );
 
 module.exports = Dogs;
+
+console.log("adasdsadasasas")

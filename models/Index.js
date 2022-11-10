@@ -11,3 +11,5 @@ Dogs.belongsTo(User, {
 });
 
 module.exports = { User, Dogs };
+
+console.log("adasdsadasasas")
