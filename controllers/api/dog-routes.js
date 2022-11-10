@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Dog, User } = require("../../models");
+const { Dogs, User } = require("../../models");
 
 router.get("/", async (req, res) => {
   // find all dogs
