@@ -1,44 +1,56 @@
-const router = require('express').Router();
-const { User, Dogs } = require('../models');
+const router = require("express").Router();
+const { User, Dogs } = require("../models");
 
-router.get('/', async (req, res) => {
-    try {
-        res.render('homepage', {
-            loggedIn: req.session.loggedIn,
-        })
-    }catch(err){
-        console.log(err);
-        res.status(500).json(err)
-    }
-})
+router.get("/", async (req, res) => {
+  try {
+    res.render("homepage", {
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 //log in page
-router.get('/login', async (req, res) => {
-    try{
-        res.render('login')
-    }catch(err){
-        console.log(err)
-        res.status(500)
-    }
+router.get("/login", async (req, res) => {
+  try {
+    res.render("login");
+  } catch (err) {
+    console.log(err);
+    res.status(500);
+  }
+  res.render("login");
+});
 
-})
+// voting page
+router.get("/vote", async (req, res) => {
+  try {
+    res.render("vote");
+  } catch (err) {
+    console.log(err);
+    res.status(500);
+  }
+  res.render("vote");
+});
+
 // localhost:3001/leaderboard
-router.get('/leaderboard', async (req,res) =>{
-    try{
-        res.render('leaderboard');
-
-    } catch(err){
-        res.json(err);
-    }
+router.get("/leaderboard", async (req, res) => {
+  try {
+    res.render("leaderboard");
+  } catch (err) {
+    res.json(err);
+  }
 });
 //sign up page
-router.get('/signup', async (req, res) => {
-    try{
-        res.render('signup')
-    }catch(err){
-        console.log(err)
-        res.status(500) 
-    }
-    
-})
-module.exports = router
+router.get("/signup", async (req, res) => {
+  try {
+    res.render("signup");
+  } catch (err) {
+    console.log(err);
+    res.status(500);
+  }
+  res.render("signup");
+});
+
+module.exports = router;
