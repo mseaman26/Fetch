@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const sequelize = require("../../config/connection");
 const { Dogs, User } = require("../../models");
 
 router.get("/", async (req, res) => {
@@ -70,6 +71,22 @@ router.put("/:losers", async (req, res) => {
   }
 });
 
+//Localhost:3001/api/dogs/ranking/:id
+// Given a dogs id, return how highly it is ranked out of the total database.
+router.get("/ranking/:id", async (req, res) => {
+  try {
+    const [results, metadata] = await sequelize.query(`select * from 
+    (
+    select *, 
+    RANK() OVER (ORDER BY rating DESC) dog_rank 
+    from dogs) 
+    as dog_ranking WHERE id = ${req.params.id}`);
+    res.json(results);
+  } catch (err) {
+    console.log(err);
+    res.json(err);
+  }
+});
 // localhost:3001/api/dogs/topdogs
 // req.params.count = number of dogs you want to return
 router.get("/topdogs/:count", async (req, res) => {
