@@ -23,7 +23,6 @@ const seedDogs = async() => {
                 rating: Math.floor(Math.random() * 800) + 600,
                 users: [users[Math.floor(Math.random() * users.length)]],
                 include: [{association:User}],
-
             }
         })
         // console.log(dogs) 
@@ -32,7 +31,6 @@ const seedDogs = async() => {
     } catch(err){
         console.log(err);
     }
-
 }
 // seedDogs();
 module.exports = seedDogs;
