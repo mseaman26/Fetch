@@ -75,17 +75,13 @@ router.put("/:losers", async (req, res) => {
 // Given a dogs id, return how highly it is ranked out of the total database.
 router.get("/ranking/:id", async (req, res) => {
   try {
-    const dogData = await Dogs.findAll({
-      attributes: [
-        "id",
-        "name",
-        "breed",
-        'rating',
-        [sequelize.literal('RANK() OVER (ORDER BY "rating" DESC)'), "rank"],
-      ],
-    });
-    console.log(dogData);
-    res.json(dogData);
+    const [results, metadata] = await sequelize.query(`select * from 
+    (
+    select *, 
+    RANK() OVER (ORDER BY rating DESC) dog_rank 
+    from dogs) 
+    as dog_ranking WHERE id = ${req.params.id}`);
+    res.json(results);
   } catch (err) {
     console.log(err);
     res.json(err);
