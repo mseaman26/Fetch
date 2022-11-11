@@ -1,11 +1,8 @@
 const heartClick = async (event) => {
-    event.preventDefault();
-    console.log("favorite button")
-
-    if ()
-}
-
+  event.preventDefault();
+  console.log("favorite button");
+};
 
 document
-.getElementById('favorite-button')
-.addEventListener('click', heartClick);
+  .getElementById("favorite-button")
+  .addEventListener("click", heartClick);
