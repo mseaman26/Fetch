@@ -1,3 +1,5 @@
+const voteCute = 
+
 const heartClick = async (event) => {
   event.preventDefault();
   console.log("favorite button");
