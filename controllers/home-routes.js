@@ -21,7 +21,6 @@ router.get("/login", async (req, res) => {
     console.log(err);
     res.status(500);
   }
-  res.render("login");
 });
 
 // voting page
@@ -53,23 +52,19 @@ router.get('/signup', async (req, res) => {
     }
     
 })
+
+//renders the current user's favorite dogs
 router.get('/favorites', withAuth, async (req, res) => {
     try{
         console.log(req.session.user_id)
-       
         const dbFavoriteDogs = await Dogs.findAll({
-            // where: {
-            //     user_id: req.session.user_id
-            // },
             include: [{
                 model: User,
                 where: {
                     id: req.session.user_id
                 }
-            },
-        ]
+            }]
         })
-        // console.log(dbFavoriteDogs)
         const favoriteDogs = dbFavoriteDogs.map((dog) => 
             dog.get({ plain: true })
         )
@@ -79,7 +74,6 @@ router.get('/favorites', withAuth, async (req, res) => {
             favoriteDogs,
             loggedIn: req.session.loggedIn
         })
-        // res.json(dbFavoriteDogs)
     }catch(err){
         console.log(err)
         res.json(err)
