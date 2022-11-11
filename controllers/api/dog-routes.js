@@ -1,6 +1,6 @@
 const router = require("express").Router();
+const sequelize = require("../../config/connection");
 const { Dogs, User } = require("../../models");
-
 
 router.get("/", async (req, res) => {
   // find all dogs
@@ -71,4 +71,24 @@ router.put("/:losers", async (req, res) => {
   }
 });
 
+//Localhost:3001/api/dogs/ranking/:id
+// Given a dogs id, return how highly it is ranked out of the total database.
+router.get("/ranking/:id", async (req, res) => {
+  try {
+    const dogData = await Dogs.findAll({
+      attributes: [
+        "id",
+        "name",
+        "breed",
+        'rating',
+        [sequelize.literal('RANK() OVER (ORDER BY "rating" DESC)'), "rank"],
+      ],
+    });
+    console.log(dogData);
+    res.json(dogData);
+  } catch (err) {
+    console.log(err);
+    res.json(err);
+  }
+});
 module.exports = router;
