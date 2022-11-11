@@ -36,15 +36,26 @@ router.get("/vote", withAuth, async (req, res) => {
   try {
     console.log(req.session.user_id);
     const dbDogs = await Dogs.findAll({
-      limit: Number(2),
     });
+    
     const dogVote = await dbDogs.map((dog) => {
-      dog.get({ plain: true });
+       return dog.get({ plain: true });
     });
-    console.log(dogVote);
+    let index1 = Math.floor(Math.random() * dogVote.length)
+    function findAnotherRandomDog(){
+        let index = Math.floor(Math.random() * dogVote.length)
+        if(index !== index1){
+            return index
+        } else{
+            findAnotherRandomDog
+        }
+    }
+    let index2 = findAnotherRandomDog()
+    console.log(dogVote[index1], dogVote[index2])
     res.render("vote", {
-      Dogs,
-      loggedIn: req.session.loggedIn,
+        dog1: dogVote[index1],
+        dog2: dogVote[index2],
+        loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     console.log(err);
