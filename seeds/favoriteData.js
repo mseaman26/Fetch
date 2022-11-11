@@ -23,5 +23,5 @@ const seedFavorite = async(num) =>{
     }
     
 }
-seedFavorite(100);
+// seedFavorite(100);
 module.exports = seedFavorite;
