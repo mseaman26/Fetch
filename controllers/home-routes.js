@@ -1,5 +1,6 @@
 const router = require("express").Router();
-const { User, Dogs } = require("../models");
+const { User, Dogs, Favorites } = require("../models");
+const withAuth = require('../utils/auth')
 
 router.get("/", async (req, res) => {
   try {
@@ -24,7 +25,7 @@ router.get("/login", async (req, res) => {
 });
 
 // voting page
-router.get("/vote", async (req, res) => {
+router.get("/vote",withAuth, async (req, res) => {
   try {
     res.render("vote");
   } catch (err) {
@@ -35,7 +36,7 @@ router.get("/vote", async (req, res) => {
 });
 
 // localhost:3001/leaderboard
-router.get("/leaderboard", async (req, res) => {
+router.get("/leaderboard", withAuth, async (req, res) => {
   try {
     res.render("leaderboard");
   } catch (err) {
@@ -52,20 +53,33 @@ router.get('/signup', async (req, res) => {
     }
     
 })
-router.get('/favorites', async (req, res) => {
+router.get('/favorites', withAuth, async (req, res) => {
     try{
-        const dbFavorites = await Dogs.findAll({
-
+        console.log(req.session.user_id)
+       
+        const dbFavoriteDogs = await Dogs.findAll({
+            // where: {
+            //     user_id: req.session.user_id
+            // },
+            include: [{
+                model: User,
+                where: {
+                    id: req.session.user_id
+                }
+            },
+        ]
         })
-        // console.log(dbFavorites)
-        const favorites = dbFavorites.map((dog) => {
-           return dog.get({ plain: true })
-        })
-        console.log(favorites)
+        // console.log(dbFavoriteDogs)
+        const favoriteDogs = dbFavoriteDogs.map((dog) => 
+            dog.get({ plain: true })
+        )
+        console.log(favoriteDogs)
+        console.log(favoriteDogs[0].users)
         res.render('favorites', {
-            favorites,
+            favoriteDogs,
             loggedIn: req.session.loggedIn
         })
+        // res.json(dbFavoriteDogs)
     }catch(err){
         console.log(err)
         res.json(err)
