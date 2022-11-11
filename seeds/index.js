@@ -17,5 +17,6 @@ const seedAll = async () => {
 
   process.exit(0);
 };
-
+// Don't Delete, Shows magic methods
+//console.log(Object.keys(User.prototype));
 seedAll();
