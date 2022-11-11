@@ -44,7 +44,7 @@ router.get("/vote",withAuth, async (req, res) => {
 });
 
 // localhost:3001/leaderboard
-router.get("/leaderboard", withAuth, async (req, res) => {
+router.get("/leaderboard", async (req, res) => {
   try {
     res.render("leaderboard");
   } catch (err) {
