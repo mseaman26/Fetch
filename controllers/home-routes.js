@@ -1,10 +1,15 @@
 const router = require("express").Router();
-const { User, Dogs } = require("../models");
+const { User, Dogs, Favorites } = require("../models");
+const withAuth = require('../utils/auth')
 
 router.get("/", async (req, res) => {
   try {
+    const dbCurrentUser = await User.findByPk(req.session.user_id)
+    const currentUser = await dbCurrentUser.get({ plain: true })
+    console.log(currentUser)
     res.render("homepage", {
-      loggedIn: req.session.loggedIn,
+        currentUser: currentUser,
+        loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     console.log(err);
@@ -20,11 +25,10 @@ router.get("/login", async (req, res) => {
     console.log(err);
     res.status(500);
   }
-  res.render("login");
 });
 
 // voting page
-router.get("/vote", async (req, res) => {
+router.get("/vote",withAuth, async (req, res) => {
   try {
     res.render("vote");
   } catch (err) {
@@ -35,7 +39,7 @@ router.get("/vote", async (req, res) => {
 });
 
 // localhost:3001/leaderboard
-router.get("/leaderboard", async (req, res) => {
+router.get("/leaderboard", withAuth, async (req, res) => {
   try {
     res.render("leaderboard");
   } catch (err) {
@@ -43,14 +47,41 @@ router.get("/leaderboard", async (req, res) => {
   }
 });
 //sign up page
-router.get("/signup", async (req, res) => {
-  try {
-    res.render("signup");
-  } catch (err) {
-    console.log(err);
-    res.status(500);
-  }
-  res.render("signup");
-});
+router.get('/signup', async (req, res) => {
+    try{
+        res.render('signup')
+    }catch(err){
+        console.log(err)
+        res.status(500) 
+    }
+    
+})
 
-module.exports = router;
+//renders the current user's favorite dogs
+router.get('/favorites', withAuth, async (req, res) => {
+    try{
+        console.log(req.session.user_id)
+        const dbFavoriteDogs = await Dogs.findAll({
+            include: [{
+                model: User,
+                where: {
+                    id: req.session.user_id
+                }
+            }]
+        })
+        const favoriteDogs = dbFavoriteDogs.map((dog) => 
+            dog.get({ plain: true })
+        )
+        console.log(favoriteDogs)
+        console.log(favoriteDogs[0].users)
+        res.render('favorites', {
+            favoriteDogs,
+            loggedIn: req.session.loggedIn
+        })
+    }catch(err){
+        console.log(err)
+        res.json(err)
+    }
+    
+})
+module.exports = router
