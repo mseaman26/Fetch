@@ -4,7 +4,8 @@ const withAuth = require('../utils/auth')
 
 router.get("/", async (req, res) => {
   try {
-    const currentUser = await User.findByPk(req.session.user_id)
+    const dbCurrentUser = await User.findByPk(req.session.user_id)
+    const currentUser = await dbCurrentUser.get({ plain: true })
     console.log(currentUser)
     res.render("homepage", {
         currentUser: currentUser,
