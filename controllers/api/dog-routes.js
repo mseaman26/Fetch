@@ -87,4 +87,22 @@ router.get("/ranking/:id", async (req, res) => {
     res.json(err);
   }
 });
+// localhost:3001/api/dogs/topdogs
+// req.params.count = number of dogs you want to return
+router.get("/topdogs/:count", async (req, res) => {
+  try {
+    const dogData = await Dogs.findAll({
+      order: [["rating", "DESC"]],
+      limit: Number(req.params.count),
+    });
+    const dogs = await dogData.map((element) => {
+      return element.get({ plain: true });
+    });
+    res.json(dogs);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+});
+
 module.exports = router;

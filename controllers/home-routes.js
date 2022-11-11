@@ -44,9 +44,19 @@ router.get("/vote",withAuth, async (req, res) => {
 });
 
 // localhost:3001/leaderboard
-router.get("/leaderboard", withAuth, async (req, res) => {
+router.get("/leaderboard", async (req, res) => {
   try {
-    res.render("leaderboard");
+    const dogData = await Dogs.findAll({
+        order: [["rating", "DESC"]],
+        limit: Number(7),
+      });
+      const dogs = await dogData.map((element) => {
+        return element.get({ plain: true });
+      });
+      console.log(dogs)
+    res.render("leaderboard",{
+        dogs: dogs
+    });
   } catch (err) {
     res.json(err);
   }
