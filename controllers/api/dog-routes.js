@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const { Dogs, User } = require("../../models");
 
-
 router.get("/", async (req, res) => {
   // find all dogs
   try {
@@ -68,6 +67,24 @@ router.put("/:losers", async (req, res) => {
     res.status(200).json(dogData);
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+// localhost:3001/api/dogs/topdogs
+// req.params.count = number of dogs you want to return
+router.get("/topdogs/:count", async (req, res) => {
+  try {
+    const dogData = await Dogs.findAll({
+      order: [["rating", "DESC"]],
+      limit: Number(req.params.count),
+    });
+    const dogs = await dogData.map((element) => {
+      return element.get({ plain: true });
+    });
+    res.json(dogs);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
   }
 });
 
