@@ -2,22 +2,18 @@ const router = require("express").Router();
 const { User, Dogs, Favorites } = require("../../models");
 const sequelize = require('../../config/connection')
 
-//localhost:3001/api/favorites
-router.get("/", async (req, res) => {
-
-  // try {
-  //   const dogData = await Dogs.findAll({
-  //   })
-
-  //   const dogs = dogData.map((post) => 
-  //       post.get({ plain: true }) 
-  //   )
-  //   res.json(dogs)
-  //   }catch(err){
-  //     console.log(err);
-  //     res.status(500).json(err)
-  // }
-
+//add dog to favorites
+router.post("/", async (req, res) => {
+    try{
+      const newFavorite = await Favorites.create({
+        user_id: req.body.user_id,
+        dog_id: req.body.dog_id
+      })
+      res.status(200).json(newFavorite)
+    }catch(err){
+      console.log(err)
+      res.status(500).json
+    }
 
 });
 
