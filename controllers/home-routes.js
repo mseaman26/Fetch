@@ -35,12 +35,23 @@ router.get("/login", async (req, res) => {
 // voting page
 router.get("/vote",withAuth, async (req, res) => {
   try {
+    console.log(req.session.user_id)
+    const dbDogs = await Dogs.findAll({
+        limit: Number(2)
+    });
+    const dogVote = await dbDogs.map((dog) => {
+        dog.get({ plain: true})
+    });
+    console.log(dogVote)
     res.render("vote");
   } catch (err) {
     console.log(err);
     res.status(500);
   }
-  res.render("vote");
+  res.render("vote", {
+    Dogs,
+    loggedIn: req.session.loggedIn
+  });
 });
 
 // localhost:3001/leaderboard
