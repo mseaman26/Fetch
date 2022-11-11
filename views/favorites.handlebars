@@ -1,0 +1,14 @@
+<h1>Here Are Your Favorite Dogs!</h1>
+
+{{#each favoriteDogs}}
+    <section class="card" id="{{id}}">
+        <h1>{{name}}</h1>
+        <h5>Breed: {{breed}}</h5>
+        <p>Rating: {{rating}}</p>
+        <img src="{{url}}" alt="" style="width:500px;">
+    </section>
+   </a>
+{{/each}}
+
+<script src="/js/favorites.js"></script>
+

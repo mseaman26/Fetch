@@ -13,28 +13,10 @@ const seedAll = async () => {
 
   await seedDogs();
 
-  // await seedFavorite();
+  await seedFavorite(100);
 
-  // const dummy = await Dogs.create({
-  //   name: "Tank",
-  //   url: "https://images.dog.ceo/breeds/cattledog-australian/IMG_5481.jpg",
-  //   breed: "cattledog-australian",
-  //   rating: 1159,
-  // });
-  // const usDummy = await User.create({
-  //   first_name: "James",
-  //   last_name: "Doe",
-  //   password: "password",
-  //   email: "james.doe@example.com",
-  // });
-
-  //   dummy.getUsers();
-  //   console.log(Object.keys(User.__proto__));
-  //   console.log(Object.getOwnPropertyNames(Dogs).concat(Object.getOwnPropertyNames(Dogs.__proto__)));
-  //   console.log(dummy.getAssociations)
-  // console.log(Object.keys(Dogs.prototype));
-  // console.log(await dummy.addUsers(usDummy));
   process.exit(0);
 };
-
+// Don't Delete, Shows magic methods
+//console.log(Object.keys(User.prototype));
 seedAll();

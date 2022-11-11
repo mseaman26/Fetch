@@ -8,7 +8,7 @@ const seedDogs = async() => {
         const users = userData.map((element)=>{
             return element.get({plain:true});
         })
-        console.log(users);
+        // console.log(users);
         const response = await fetch(
             "https://dog.ceo/api/breeds/image/random/50"
         )
@@ -23,7 +23,6 @@ const seedDogs = async() => {
                 rating: Math.floor(Math.random() * 800) + 600,
                 users: [users[Math.floor(Math.random() * users.length)]],
                 include: [{association:User}],
-
             }
         })
         // console.log(dogs) 
@@ -32,7 +31,6 @@ const seedDogs = async() => {
     } catch(err){
         console.log(err);
     }
-
 }
 // seedDogs();
 module.exports = seedDogs;
