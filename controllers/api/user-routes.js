@@ -9,6 +9,7 @@ router.post('/login', async (req, res) => {
                 email: req.body.email
             },
         }) 
+        console.log(currentUser)
         if (!currentUser){
             res.status(404).json("Login Failed.  Incorrect username and/or password")
             return

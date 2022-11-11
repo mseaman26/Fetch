@@ -32,6 +32,7 @@ const seedUser = async () => {
       password: "password",
       email: "jane.doe@example.com",
     });
+    
     // const userData = checkUserApi();
     // console.log(users);
     await User.bulkCreate(users, { individualHooks: true });
