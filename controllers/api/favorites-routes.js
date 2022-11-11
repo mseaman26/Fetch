@@ -17,5 +17,21 @@ router.post("/", async (req, res) => {
 
 });
 
+//remove dog from favorites
+router.delete('/', async (req, res) => {
+  try{
+    const favToDelete = await Favorites.findOne({
+      where: {
+        user_id: req.body.user_id,
+        dog_id: req.body.dog_id
+      }
+    })
+    favToDelete.destroy({})
+    res.status(200).json({ message: "favorite deleted"})
+  }catch(err){
+    console.log(err)
+  }
+})
+
 
 module.exports = router;
