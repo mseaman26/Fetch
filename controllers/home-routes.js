@@ -1,20 +1,19 @@
 const router = require("express").Router();
 const { User, Dogs, Favorites } = require("../models");
-const withAuth = require('../utils/auth')
+const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
     let currentUser = undefined;
-    if(req.session.user_id){
-      const dbCurrentUser = await User.findByPk(req.session.user_id)
-      currentUser = await dbCurrentUser.get({ plain: true })
-      console.log(currentUser)
+    if (req.session.user_id) {
+      const dbCurrentUser = await User.findByPk(req.session.user_id);
+      currentUser = await dbCurrentUser.get({ plain: true });
+      console.log(currentUser);
     }
-    
-    
+
     res.render("homepage", {
-        currentUser: currentUser,
-        loggedIn: req.session.loggedIn,
+      currentUser: currentUser,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     console.log(err);
@@ -33,70 +32,78 @@ router.get("/login", async (req, res) => {
 });
 
 // voting page
-router.get("/vote",withAuth, async (req, res) => {
+router.get("/vote", withAuth, async (req, res) => {
   try {
-    res.render("vote");
+    console.log(req.session.user_id);
+    const dbDogs = await Dogs.findAll({
+      limit: Number(2),
+    });
+    const dogVote = await dbDogs.map((dog) => {
+      dog.get({ plain: true });
+    });
+    console.log(dogVote);
+    res.render("vote", {
+      Dogs,
+      loggedIn: req.session.loggedIn,
+    });
   } catch (err) {
     console.log(err);
     res.status(500);
   }
-  res.render("vote");
 });
 
 // localhost:3001/leaderboard
 router.get("/leaderboard", async (req, res) => {
   try {
     const dogData = await Dogs.findAll({
-        order: [["rating", "DESC"]],
-        limit: Number(7),
-      });
-      const dogs = await dogData.map((element) => {
-        return element.get({ plain: true });
-      });
-      console.log(dogs)
-    res.render("leaderboard",{
-        dogs: dogs
+      order: [["rating", "DESC"]],
+      limit: Number(7),
+    });
+    const dogs = await dogData.map((element) => {
+      return element.get({ plain: true });
+    });
+    console.log(dogs);
+    res.render("leaderboard", {
+      dogs: dogs,
     });
   } catch (err) {
     res.json(err);
   }
 });
 //sign up page
-router.get('/signup', async (req, res) => {
-    try{
-        res.render('signup')
-    }catch(err){
-        console.log(err)
-        res.status(500) 
-    }
-    
-})
+router.get("/signup", async (req, res) => {
+  try {
+    res.render("signup");
+  } catch (err) {
+    console.log(err);
+    res.status(500);
+  }
+});
 
 //renders the current user's favorite dogs
-router.get('/favorites', withAuth, async (req, res) => {
-    try{
-        console.log(req.session.user_id)
-        const dbFavoriteDogs = await Dogs.findAll({
-            include: [{
-                model: User,
-                where: {
-                    id: req.session.user_id
-                }
-            }]
-        })
-        const favoriteDogs = dbFavoriteDogs.map((dog) => 
-            dog.get({ plain: true })
-        )
-        console.log(favoriteDogs)
-        console.log(favoriteDogs[0].users)
-        res.render('favorites', {
-            favoriteDogs,
-            loggedIn: req.session.loggedIn
-        })
-    }catch(err){
-        console.log(err)
-        res.json(err)
-    }
-    
-})
-module.exports = router
+router.get("/favorites", withAuth, async (req, res) => {
+  try {
+    console.log(req.session.user_id);
+    const dbFavoriteDogs = await Dogs.findAll({
+      include: [
+        {
+          model: User,
+          where: {
+            id: req.session.user_id,
+          },
+        },
+      ],
+    });
+    const favoriteDogs = dbFavoriteDogs.map((dog) => dog.get({ plain: true }));
+    console.log(favoriteDogs);
+    console.log(favoriteDogs[0].users);
+    res.render("favorites", {
+      favoriteDogs,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.json(err);
+  }
+});
+module.exports = router;
