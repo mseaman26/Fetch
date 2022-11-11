@@ -4,8 +4,11 @@ const withAuth = require('../utils/auth')
 
 router.get("/", async (req, res) => {
   try {
+    const currentUser = await User.findByPk(req.session.user_id)
+    console.log(currentUser)
     res.render("homepage", {
-      loggedIn: req.session.loggedIn,
+        currentUser: currentUser,
+        loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     console.log(err);
