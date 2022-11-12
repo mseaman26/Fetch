@@ -17,7 +17,6 @@ const favoriteCheckboxHandler = async (event) => {
                 console.log("response ok")
             }else{console.log(response)}
         }else {
-
         }
     }  
 }
