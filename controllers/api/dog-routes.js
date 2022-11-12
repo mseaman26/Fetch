@@ -39,6 +39,7 @@ router.get("/:id", async (req, res) => {
 
 router.put("/:winners", async (req, res) => {
   // winner is selected by user
+  console.log("winner route hit")
   try {
     const dogData = await Dogs.create(req.body, {
       where: {
