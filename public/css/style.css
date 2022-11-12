@@ -15,7 +15,7 @@ img{
     border-radius: 10%;
 }
 
-button{
+.custom-homepage-button{
     margin-top: 20%;
     margin-left: 5%;
     border-radius: 10%;
@@ -66,3 +66,10 @@ h6{
  font-weight: bolder;
  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+.custom-remove-button{
+    background-color: red;
+    width: fit-content;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
