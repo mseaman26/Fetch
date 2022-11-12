@@ -11,33 +11,40 @@
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="/dist/pretty-checkbox.min.css" />
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
   </head>
   <nav class="justify-content-between">
-      <a href="/" class="nav-anchor">Home</a>
+    <a href="/" class="nav-anchor">Home</a>
 
-      <a href="/signup" class="nav-anchor">Signup</a>
-      
-      
-      {{#if loggedIn}}
-          <a href='' class="nav-anchor" id="logout">Logout</a>
-          {{else}}
-          <a href="/login" class="nav-anchor">Login</a>
-          {{/if}}
+    <a href="/signup" class="nav-anchor">Signup</a>
 
-      
-      
-      {{#if loggedIn}}
-        <script src="/js/logout.js"></script>
-      {{/if}}
-      <a href="/leaderboard" class="nav-anchor">Leaderboard</a>
-      <a href="/favorites" class="nav-anchor">Favorites</a>
-    </nav>
-    <div>
-      <img src="/assets/Fetch2.jpg" alt="Logo" width="150" height="80" class="d-inline-block align-text-top img-fluid">
-    </div>
+    {{#if loggedIn}}
+      <a href="" class="nav-anchor" id="logout">Logout</a>
+    {{else}}
+      <a href="/login" class="nav-anchor">Login</a>
+    {{/if}}
 
-    {{{body}}}
+    {{#if loggedIn}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
+    <a href="/leaderboard" class="nav-anchor">Leaderboard</a>
+    <a href="/favorites" class="nav-anchor">Favorites</a>
+  </nav>
+  <div>
+    <img
+      src="/assets/Fetch2.jpg"
+      alt="Logo"
+      width="150"
+      height="80"
+      class="d-inline-block align-text-top img-fluid"
+    />
+  </div>
+
+  {{{body}}}
 
 </html>

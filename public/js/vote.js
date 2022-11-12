@@ -3,7 +3,7 @@ const heartClick = async (event) => {
   console.log("favorite button");
   fetch('/api/dogs/vote',{
     method: 'POST',
-    body: JSON.stringify({winner: ,loser:})
+    body: JSON.stringify({winner: , loser:})
   })
 };
 
