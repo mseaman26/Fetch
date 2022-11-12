@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const sequelize = require("../../config/connection");
 const { Dogs, User } = require("../../models");
+var EloRating = require("elo-rating");
 
 router.get("/", async (req, res) => {
   // find all dogs
@@ -103,6 +104,22 @@ router.get("/topdogs/:count", async (req, res) => {
     console.log(err);
     res.sendStatus(500);
   }
+});
+
+/**
+localhost:3001/api/dogs/vote
+Body
+{
+winner:dog_id,
+loser:dog_id
+}
+ */
+router.post("/vote", async (req, res) => {
+  
+  let result = EloRating.calculate(1450, 1535, true);
+  console.log(result.playerRating);
+  console.log(result.opponentRating);
+  res.json({ winner: result.playerRating, loser: result.opponentRating });
 });
 
 module.exports = router;
