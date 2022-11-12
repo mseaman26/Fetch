@@ -1,12 +1,9 @@
-const heartClick = async (event) => {
+const cuterClick = async (event) => {
   event.preventDefault();
+  if(event.target.classList.contains('cuter-button'))
   console.log("favorite button");
-  fetch('/api/dogs/vote',{
-    method: 'POST',
-    body: JSON.stringify({winner: ,loser:})
-  })
+
 };
 
 document
-  .getElementById("favorite-button")
-  .addEventListener("click", heartClick);
+  .addEventListener("click", cuterClick);

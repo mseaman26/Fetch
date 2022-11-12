@@ -40,6 +40,32 @@ const favoritesHandler = async (event) => {
         })
         document.location.reload()
     }
-}
+
+    //chose which dog is cuter
+    if(event.target.classList.contains('cuter-button')){
+        let cuterbuttons = document.querySelectorAll('.cuter-button')
+        console.log(cuterbuttons)
+        let winningDogId = event.target.dataset.dog_id
+        const findLosingId = () => {
+            for (let i = 0; i < cuterbuttons.length; i ++){
+                if(cuterbuttons[i].dataset.dog_id == winningDogId){
+                    
+                }else{
+                    return cuterbuttons[i].dataset.dog_id
+                }
+            }
+        }
+        let losingDogId = findLosingId()
+        console.log(winningDogId, losingDogId)
+   
+    }
+    
+
+      
+      
+}   
+    
+
+
 
 document.addEventListener('click', favoritesHandler)
