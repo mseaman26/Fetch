@@ -39,6 +39,7 @@ router.get("/:id", async (req, res) => {
 
 router.put("/:winners", async (req, res) => {
   // winner is selected by user
+  console.log("winner route hit")
   try {
     const dogData = await Dogs.create(req.body, {
       where: {
@@ -121,6 +122,7 @@ router.post("/vote", async (req, res) => {
     const dogData = await Dogs.findAll(
       {where: 
         {
+          // WHERE ID: winner.id OR loser.id; 
           [Op.or]:
             [{id:Number(req.body.winner)},
              {id:Number(req.body.loser)}
@@ -128,7 +130,9 @@ router.post("/vote", async (req, res) => {
           attributes: ['id','rating']});
     let winner = dogData[0];
     let loser = dogData[1];
+    //calculate new ratings for winner and loser
     let result = EloRating.calculate(winner.rating, loser.rating, true);
+    //update the database;
     winner.update({rating:result.playerRating});
     loser.update({rating:result.opponentRating});
     res.json({ winner: winner.rating, loser: loser.rating });

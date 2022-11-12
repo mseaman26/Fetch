@@ -1,7 +1,7 @@
  <body class="bg-image">
 {{#if loggedIn}}
     {{#if currentUser}}
-        <h1>Nice to see you {{currentUser.first_name}} {{currentUser.last_name}}</h1>
+        <div class="welcome-message">Nice to see you {{currentUser.first_name}} {{currentUser.last_name}}</div>
     {{/if}}
 {{/if}}
 
@@ -10,7 +10,7 @@
 <h6>And More Dogs!</h6>
 
 <a href="/vote">
-    <button type="button" class="btn btn-dark btn-lg custom-homepage-button" id="vote-button">Vote for Dogs!</button>
+    <button type="button" class="btn btn-dark btn-lg custom-homepage-button fs-3" id="vote-button">Vote for Dogs!</button>
 </a>
  </body>
 
