@@ -3,14 +3,14 @@
 const favoriteCheckboxHandler = async (event) => {
     if(event.target.classList.contains('form-check-input')){
         console.log("button click")
-        id = event.target.dataset.dog_id
+        let id = event.target.dataset.dog_id
         console.log(id)
         if(event.target.checked){
             const response = await fetch ('/api/favorites', {
                 method: 'POST',
-                body: {
+                body: JSON.stringify({
                     dog_id: id
-                },
+                }),
                 headers: { 'Content-Type': 'application/json' }
             })
             if(!response.ok){
