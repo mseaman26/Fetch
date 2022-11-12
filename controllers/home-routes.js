@@ -47,14 +47,13 @@ router.get("/vote", withAuth, async (req, res) => {
         if(index !== index1){
             return index
         } else{
-            findAnotherRandomDog
+            return findAnotherRandomDog()
         }
     }
     let index2 = findAnotherRandomDog()
-    console.log(dogVote[index1], dogVote[index2])
+    let dogs = [dogVote[index1], dogVote[index2]]
     res.render("vote", {
-        dog1: dogVote[index1],
-        dog2: dogVote[index2],
+      dogs: dogs,
         loggedIn: req.session.loggedIn,
     });
   } catch (err) {

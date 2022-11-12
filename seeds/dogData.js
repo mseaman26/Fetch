@@ -19,7 +19,9 @@ const seedDogs = async() => {
             return {
                 name: dogNames.allRandom(),
                 url: element,
-                breed: data[4],
+                //reformats breed info so that it is human readable
+                // from terrier-yorkshire to yorkshire terrier
+                breed: (data[4]).split('-').reverse().join(" "),
                 rating: Math.floor(Math.random() * 800) + 600,
                 users: [users[Math.floor(Math.random() * users.length)]],
                 include: [{association:User}],
