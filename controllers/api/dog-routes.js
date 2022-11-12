@@ -126,18 +126,12 @@ router.post("/vote", async (req, res) => {
              {id:5}
             ]},
           attributes: ['id','rating']});
-    // const dogs = dogData.map((element)=>{ return element.get({plain:true})});
-    // console.log(dogs);
-    for(dog of dogData){
-      console.log(dog.id);
-      console.log(dog.rating);
-      dog.update({rating:2000});
-    }
-
-    let result = EloRating.calculate(1450, 1535, true);
-    console.log(result.playerRating);
-    console.log(result.opponentRating);
-    res.json({ winner: result.playerRating, loser: result.opponentRating });
+    let winner = dogData[0];
+    let loser = dogData[1];
+    let result = EloRating.calculate(winner.rating, loser.rating, true);
+    winner.update({rating:result.playerRating});
+    loser.update({rating:result.opponentRating});
+    res.json({ winner: winner.rating, loser: loser.rating });
   } catch(err){
     console.log(err);
     res.sendStatus(500);
