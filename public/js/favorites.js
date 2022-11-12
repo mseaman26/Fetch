@@ -57,7 +57,19 @@ const favoritesHandler = async (event) => {
         }
         let losingDogId = findLosingId()
         console.log(winningDogId, losingDogId)
-   
+        const winroute = await fetch ('/api/dogs/:winners', {
+            method: 'PUT',
+            body: JSON.stringify({
+                id: winningDogId
+            })
+        })
+        const loseRoute = await fetch ('/api/dogs/:losers', {
+            method: 'PUT',
+            body: JSON.stringify({
+                id: losingDogId
+            })
+        })
+        document.location.reload()
     }
     
 
