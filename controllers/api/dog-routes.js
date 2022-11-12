@@ -127,9 +127,22 @@ router.post("/vote", async (req, res) => {
             [{id:Number(req.body.winner)},
              {id:Number(req.body.loser)}
             ]},
-          attributes: ['id','rating']});
-    let winner = dogData[0];
-    let loser = dogData[1];
+          attributes: ['id','rating']}
+    );
+    let winner;
+    let loser;
+    for(let dog of dogData){
+      if(dog.id == Number(req.body.winner))
+      {
+        winner = dog;
+      }
+        
+      if(dog.id ==Number(req.body.loser))
+      {
+        loser = dog;
+      }
+        
+    }
     //calculate new ratings for winner and loser
     let result = EloRating.calculate(winner.rating, loser.rating, true);
     //update the database;
