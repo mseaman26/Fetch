@@ -122,8 +122,8 @@ router.post("/vote", async (req, res) => {
       {where: 
         {
           [Op.or]:
-            [{id:1},
-             {id:5}
+            [{id:Number(req.body.winner)},
+             {id:Number(req.body.loser)}
             ]},
           attributes: ['id','rating']});
     let winner = dogData[0];
