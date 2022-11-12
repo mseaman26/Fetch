@@ -17,7 +17,13 @@ const favoriteCheckboxHandler = async (event) => {
                 console.log("response ok")
             }else{console.log(response)}
         }else {
-
+            const favDelete = await fetch ('/api/favorites', {
+                method: 'DELETE',
+                body: JSON.stringify({
+                    dog_id: id
+                }),
+                headers: { 'Content-Type': 'application/json' }
+            })
         }
     }  
 }
