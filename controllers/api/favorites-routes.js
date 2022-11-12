@@ -5,9 +5,13 @@ const sequelize = require('../../config/connection')
 //add dog to favorites
 router.post("/", async (req, res) => {
     try{
-      const newFavorite = await Favorites.create({
-        user_id: req.body.user_id,
-        dog_id: req.body.dog_id
+      
+      const newFavorite = await Favorites.findOrCreate({
+        where: {
+          user_id: req.session.user_id,
+          dog_id: req.body.dog_id
+        }
+        
       })
       res.status(200).json(newFavorite)
     }catch(err){
@@ -22,7 +26,7 @@ router.delete('/', async (req, res) => {
   try{
     const favToDelete = await Favorites.findOne({
       where: {
-        user_id: req.body.user_id,
+        user_id: req.session.user_id,
         dog_id: req.body.dog_id
       }
     })

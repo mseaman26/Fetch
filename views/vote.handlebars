@@ -3,28 +3,21 @@
 <div class="container-fluid">
 
   <div class="row justify-content-center">
+    {{#each dogs}}
     <div class="col-lg-4">
       <img
         class="rounded-circle mx-auto d-block"
-        src="{{dog1.url}}"
+        src="{{url}}"
         alt="Dog Contestant One"
         width="360"
         height="360"
       />
-      <h2 class="text-center">{{dog1.name}}</h2>
-      <button class="btn"><i class="fa fa-heart"></i> Favorite</button>
+      <h2 class="text-center">{{name}}</h2>
+     {{> favs-button}}
+
       <p><a class="btn btn-secondary" href="#" role="button">Cute</a></p>
     </div>
-    <div class="col-lg-4">
-      <img
-        class="rounded-circle mx-auto d-block"
-        src="{{dog2.url}}"
-        alt="Dog Contestant Two"
-        width="360"
-        height="360"
-      />
-      <h2 class="text-center">{{dog2.name}}</h2>
-      <button class="btn"><i class="fa fa-heart"></i> Favorite</button>
-      <p><a class="btn btn-secondary" href="#" role="button">Cute</a></p>
-    </div>
+    
+    
+    {{/each}}
 </div>
