@@ -44,7 +44,6 @@ const favoritesHandler = async (event) => {
     //chose which dog is cuter
     if(event.target.classList.contains('cuter-button')){
         let cuterbuttons = document.querySelectorAll('.cuter-button')
-        console.log(cuterbuttons)
         let winningDogId = event.target.dataset.dog_id
         const findLosingId = () => {
             for (let i = 0; i < cuterbuttons.length; i ++){
@@ -56,19 +55,16 @@ const favoritesHandler = async (event) => {
             }
         }
         let losingDogId = findLosingId()
-        console.log(winningDogId, losingDogId)
-        const winroute = await fetch ('/api/dogs/:winners', {
-            method: 'PUT',
+        const winroute = await fetch ('/api/dogs/vote', {
+            method: 'POST',
             body: JSON.stringify({
-                id: winningDogId
-            })
+                winner: winningDogId,
+                loser: losingDogId
+            }),
+            headers: { 'Content-Type': 'application/json' }
+            
         })
-        const loseRoute = await fetch ('/api/dogs/:losers', {
-            method: 'PUT',
-            body: JSON.stringify({
-                id: losingDogId
-            })
-        })
+  
         document.location.reload()
     }
     
