@@ -4,8 +4,11 @@ const sequelize = require('../../config/connection')
 
 //add dog to favorites
 router.post("/", async (req, res) => {
+  console.log("route hit")
+  res.status(200)
     try{
-      
+      console.log("fav route")
+      console.log(req.session.user_id)
       const newFavorite = await Favorites.findOrCreate({
         where: {
           user_id: req.session.user_id,
