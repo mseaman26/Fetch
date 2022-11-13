@@ -1,4 +1,5 @@
-<h1 class="text-center">Choose the Cutest!</h1>
+<body class="leaderboard-bg">
+<h1 class="text-center p-5">Choose the Cutest!</h1>
 
 <div class="container-fluid">
 
@@ -8,16 +9,32 @@
       <img
         class="rounded-circle mx-auto d-block"
         src="{{url}}"
-        alt="Dog Contestant One"
+        alt="Dog Contestant"
         width="360"
         height="360"
       />
-      <h2 class="text-center">{{name}}</h2>
-     {{> favs-button}}
+      <h2 class="text-center p-3">{{name}}</h2>
+    {{> favs-button}}
+      {{!-- <div class="pretty p-icon p-toggle p-plain">
+        <input type="checkbox" />
+        <div class="state p-off">
+            <i class="icon fa fa-heart-o "></i>
+            <label>None</label>
+        </div>
+        <div class="state p-on p-info-o">
+            <i class="icon fa fa-heart"></i>
+            <label>Favorite</label>
+        </div>
+      </div> --}}
 
-      <p><a class="btn btn-secondary" href="#" role="button">Cute</a></p>
+      <p><a class="btn btn-secondary cuter-button" href="#" role="button" data-dog_id="{{id}}">This Dog is Cuter!</a></p>
     </div>
     
     
     {{/each}}
-</div>
+    </div>
+  </div>
+</body>
+    <script src="/js/favorites.js"></script>
+   
+
