@@ -34,7 +34,6 @@ router.get("/login", async (req, res) => {
 // voting page
 router.get("/vote", withAuth, async (req, res) => {
   try {
-    console.log(req.session.user_id);
     const dbDogs = await Dogs.findAll({
     });
     
@@ -107,8 +106,6 @@ router.get("/favorites", withAuth, async (req, res) => {
       ],
     });
     const favoriteDogs = dbFavoriteDogs.map((dog) => dog.get({ plain: true }));
-    console.log(favoriteDogs);
-    console.log(favoriteDogs[0].users);
     res.render("favorites", {
       favoriteDogs,
       loggedIn: req.session.loggedIn,
