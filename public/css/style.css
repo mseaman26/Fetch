@@ -124,6 +124,7 @@ h6 {
 }
 .cuter-button {
   text-align: center;
+  width: 40%;
   display: inline-block;
   font-size: 24px;
   cursor: pointer;

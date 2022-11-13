@@ -3,9 +3,9 @@
 
 <div class="container-fluid">
 
-  <div class="row justify-content-around">
+  <div class="row justify-content-center">
     {{#each dogs}}
-    <div class="col-lg-4">
+    <div class="col-4">
       <img
         class="rounded-circle mx-auto d-block"
         src="{{url}}"
@@ -17,7 +17,7 @@
       <div class="fav-and-cuter-div">
         {{> favs-button}}
 
-          <p class="cuter-button m-3 text-center"><a class="btn btn-secondary cuter-button" href="#" role="button" data-dog_id="{{id}}">This Dog is Cuter!</a></p>
+          <p class="row justify-content-center m-3"><a class="btn btn-secondary cuter-button" href="#" role="button" data-dog_id="{{id}}">This Dog is Cuter!</a></p>
       </div>
     </div>
     {{/each}}
