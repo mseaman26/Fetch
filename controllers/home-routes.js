@@ -107,8 +107,6 @@ router.get("/favorites", withAuth, async (req, res) => {
       ],
     });
     const favoriteDogs = dbFavoriteDogs.map((dog) => dog.get({ plain: true }));
-    console.log(favoriteDogs);
-    console.log(favoriteDogs[0].users);
     res.render("favorites", {
       favoriteDogs,
       loggedIn: req.session.loggedIn,
