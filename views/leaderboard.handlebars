@@ -1,5 +1,5 @@
 <body class="leaderboard-bg">
-  <div class="title-dogs text-center">Top Dogs</div>
+  <div class="text-center display-1"><strong>Top Dogs</strong></div>
 
   <div class="container">
 
@@ -12,12 +12,12 @@
           width="300"
           height="300"
         />
-        <h2 class="text-center">Second Place</h2>
-        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.
-          Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo
-          risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
-          cursus magna.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+        <h2 class="text-center">{{dogs.1.name}}</h2>
+        <div class="text-center h2">Second Place</div>
+        <p class="text-center">
+          {{format_breed dogs.1.breed}}
+        </p>
+
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4 order-lg-2 order-sm-1">
         <img
@@ -27,12 +27,11 @@
           width="300"
           height="300"
         />
-        <h2 class="text-center">First Place</h2>
-        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget
-          lacinia odio sem nec elit. Cras mattis consectetur purus sit amet
-          fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-          condimentum nibh.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+         <h2 class="text-center">{{dogs.0.name}}</h2>
+        <div class="text-center h2">First Place</div>
+        <p class="text-center">
+          {{format_breed dogs.0.breed}}
+        </p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4 order-lg-3 order-sm-3">
         <img
@@ -42,74 +41,69 @@
           width="300"
           height="300"
         />
-        <h2 class="text-center">Third Place</h2>
-        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas
-          eget quam. Vestibulum id ligula porta felis euismod semper. Fusce
-          dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-          fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+         <h2 class="text-center">{{dogs.2.name}}</h2>
+        <div class="text-center h2">Third Place</div>
+        <p class="text-center">
+          {{format_breed dogs.2.breed}}
+        </p>
       </div><!-- /.col-lg-4 -->
     </div>
     <div class="row my-3">
       <div class="col-lg-3">
         <img
-          class="rounded-circle shadow-sm p-1 mb-3 bg-body rounded"
+          class="rounded-circle mx-auto d-block shadow-sm p-2 mb-5 bg-body rounded"
           src="{{dogs.3.url}}"
           alt="Generic placeholder image"
           width="200"
           height="200"
         />
-        <h2>Runner Up</h2>
-        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.
-          Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo
-          risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
-          cursus magna.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+         <h2 class="text-center">{{dogs.3.name}}</h2>
+        <div class="text-center h2">Runner Up</div>
+        <p class="text-center">
+          {{format_breed dogs.3.breed}}
+        </p>
       </div><!-- /.col-lg-2 -->
       <div class="col-lg-3">
         <img
-          class="rounded-circle shadow-sm p-1 mb-3 bg-body rounded"
+          class="rounded-circle mx-auto d-block shadow-sm p-2 mb-5 bg-body rounded"
           src="{{dogs.4.url}}"
           alt="Generic placeholder image"
           width="200"
           height="200"
         />
-        <h2>Runner Up</h2>
-        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget
-          lacinia odio sem nec elit. Cras mattis consectetur purus sit amet
-          fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-          condimentum nibh.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+        <h2 class="text-center">{{dogs.4.name}}</h2>
+        <div class="text-center h2">Runner Up</div>
+        <p class="text-center">
+          {{format_breed dogs.4.breed}}
+        </p>
       </div><!-- /.col-lg-2 -->
       <div class="col-lg-3">
         <img
-          class="rounded-circle shadow-sm p-1 mb-3 bg-body rounded"
+          class="rounded-circle mx-auto d-block shadow-sm p-2 mb-5 bg-body rounded"
           src="{{dogs.5.url}}"
           alt="Generic placeholder image"
           width="200"
           height="200"
         />
-        <h2>Runner Up</h2>
-        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas
-          eget quam. Vestibulum id ligula porta felis euismod semper. Fusce
-          dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-          fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+        <h2 class="text-center">{{dogs.5.name}}</h2>
+        <div class="text-center h2">Runner Up</div>
+        <p class="text-center">
+          {{format_breed dogs.5.breed}}
+        </p>
       </div><!-- /.col-lg-2 -->
       <div class="col-lg-3">
         <img
-          class="rounded-circle shadow-sm p-1 mb-3 bg-body rounded"
+          class="rounded-circle mx-auto d-block shadow-sm p-2 mb-5 bg-body rounded"
           src="{{dogs.6.url}}"
           alt="Generic placeholder image"
           width="200"
           height="200"
         />
-        <h2>Runner Up</h2>
-        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget
-          lacinia odio sem nec elit. Cras mattis consectetur purus sit amet
-          fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-          condimentum nibh.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+        <h2 class="text-center">{{dogs.6.name}}</h2>
+        <div class="text-center h2">Runner Up</div>
+        <p class="text-center">
+          {{format_breed dogs.6.breed}}
+        </p>
       </div><!-- /.col-lg-2 -->
     </div>
   </div>
