@@ -68,12 +68,10 @@ const favoritesHandler = async (event) => {
         document.location.reload()
     }
     
-
-      
+    
+    
       
 }   
-    
-
 
 
 document.addEventListener('click', favoritesHandler)

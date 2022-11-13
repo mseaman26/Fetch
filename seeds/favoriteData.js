@@ -15,13 +15,11 @@ const seedFavorite = async(num) =>{
             } catch(err){
                 console.log("\n\nhaha")
             }
-            
         }
     }
     catch (err){
         console.log(err)
-    }
-    
+    } 
 }
 // seedFavorite(100);
 module.exports = seedFavorite;

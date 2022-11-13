@@ -75,6 +75,8 @@ router.get("/leaderboard", async (req, res) => {
     console.log(dogs);
     res.render("leaderboard", {
       dogs: dogs,
+      /// COMMIT THIS LATERES
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     res.json(err);
