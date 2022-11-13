@@ -31,20 +31,20 @@
             class=""
           />
           <div class="white-nav-main">
-            <a href="/" class="nav-link active white-nav-anchor" aria-current="page">Home</a>
-            <a href="/signup" class="nav-link active white-nav-anchor">Signup</a>
+            <a href="/" class="nav-link white-nav-anchor" aria-current="page">Home</a>
+            <a href="/signup" class="nav-link white-nav-anchor">Signup</a>
 
             {{#if loggedIn}}
               <a href="" class="nav-link white-nav-anchor" id="logout">Logout</a>
             {{else}}
-              <a href="/login" class="nav-link active white-nav-anchor">Login</a>
+              <a href="/login" class="nav-link white-nav-anchor">Login</a>
             {{/if}}
 
             {{#if loggedIn}}
               <script src="/js/logout.js"></script>
             {{/if}}
-            <a href="/leaderboard" class="nav-link active white-nav-anchor">Leaderboard</a>
-            <a href="/favorites" class="nav-link active white-nav-anchor">Favorites</a>
+            <a href="/leaderboard" class="nav-link white-nav-anchor">Leaderboard</a>
+            <a href="/favorites" class="nav-link white-nav-anchor">Favorites</a>
           </div>
           <a href="/vote">
             <button type="button" class="btn btn-dark btn-lg fs-3 nav-vote-button" id="vote-button">Start Rating Dogs!</button>
@@ -58,5 +58,5 @@
   </div>
 
   {{{body}}}
-
+<script src="/js/main.js"></script>
 </html>
