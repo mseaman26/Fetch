@@ -19,7 +19,7 @@
     <link rel="icon" type="image/x-icon" href="/public/assets/Fetch2.jpg" />
   </head>
 
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark fs-3 fw-bold mt-2">
+  <nav class="main-nav">
     <div class="">
       <div class="" id="navbarNavAltMarkup">
         <div class="navbar-nav">
@@ -30,20 +30,25 @@
             height="50"
             class=""
           />
-          <a href="/" class="nav-link active" aria-current="page">Home</a>
-          <a href="/signup" class="nav-link active">Signup</a>
+          <div class="white-nav-main">
+            <a href="/" class="nav-link active white-nav-anchor" aria-current="page">Home</a>
+            <a href="/signup" class="nav-link active white-nav-anchor">Signup</a>
 
-          {{#if loggedIn}}
-            <a href="" class="nav-link active" id="logout">Logout</a>
-          {{else}}
-            <a href="/login" class="nav-link active">Login</a>
-          {{/if}}
+            {{#if loggedIn}}
+              <a href="" class="nav-link white-nav-anchor" id="logout">Logout</a>
+            {{else}}
+              <a href="/login" class="nav-link active white-nav-anchor">Login</a>
+            {{/if}}
 
-          {{#if loggedIn}}
-            <script src="/js/logout.js"></script>
-          {{/if}}
-          <a href="/leaderboard" class="nav-link active">Leaderboard</a>
-          <a href="/favorites" class="nav-link active">Favorites</a>
+            {{#if loggedIn}}
+              <script src="/js/logout.js"></script>
+            {{/if}}
+            <a href="/leaderboard" class="nav-link active white-nav-anchor">Leaderboard</a>
+            <a href="/favorites" class="nav-link active white-nav-anchor">Favorites</a>
+          </div>
+          <a href="/vote">
+            <button type="button" class="btn btn-dark btn-lg fs-3 nav-vote-button" id="vote-button">Start Rating Dogs!</button>
+          </a>
 
         </div>
       </div>
