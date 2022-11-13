@@ -118,6 +118,8 @@ h6 {
 }
 .fav-and-cuter-div {
   display: inline;
+  color: white;
+  text-align: center;
 }
 .state {
   width: fit-content;
@@ -151,6 +153,7 @@ h6 {
   display: flex;
   justify-content: center;
 }
+
 .form-label {
   color: white;
 }
