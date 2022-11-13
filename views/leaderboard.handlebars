@@ -2,9 +2,25 @@
   <div class="text-center display-1"><strong>Top Dogs</strong></div>
 
   <div class="container">
-
     <div class="row my-3 height">
-      <div class="col-lg-4 order-lg-1 order-sm-2">
+      <div class="col-lg-6 offset-3">
+        <img
+          class="rounded-circle mx-auto d-block shadow-sm p-2 mb-5 bg-body rounded"
+          src="{{dogs.0.url}}"
+          alt="Generic placeholder image"
+          width="400"
+          height="400"
+        />
+         <h2 class="text-center h1">{{dogs.0.name}}</h2>
+        <div class="text-center h1">First Place</div>
+        <p class="text-center">
+          {{format_breed dogs.0.breed}}
+        </p>
+      </div><!-- /.col-lg-4 -->
+
+    </div>
+    <div class="row my-3 height">
+      <div class="col-4 offset-2">
         <img
           class="rounded-circle mx-auto d-block shadow-sm p-2 mb-5 bg-body rounded"
           src="{{dogs.1.url}}"
@@ -19,21 +35,7 @@
         </p>
 
       </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4 order-lg-2 order-sm-1">
-        <img
-          class="rounded-circle mx-auto d-block shadow-sm p-2 mb-5 bg-body rounded"
-          src="{{dogs.0.url}}"
-          alt="Generic placeholder image"
-          width="300"
-          height="300"
-        />
-         <h2 class="text-center">{{dogs.0.name}}</h2>
-        <div class="text-center h2">First Place</div>
-        <p class="text-center">
-          {{format_breed dogs.0.breed}}
-        </p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4 order-lg-3 order-sm-3">
+      <div class="col-4">
         <img
           class="rounded-circle mx-auto d-block shadow-sm p-2 mb-5 bg-body rounded"
           src="{{dogs.2.url}}"
