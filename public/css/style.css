@@ -163,7 +163,9 @@ h6 {
         height: 250px;
     }
 } */
-
+.favorites-card{
+    max-width: 400px;
+}
 @media screen and (max-width: 768px) {
 
   .mx-auto {
