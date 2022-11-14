@@ -1,16 +1,20 @@
 <body class="leaderboard-bg">
-<h1>Here Are Your Favorite Dogs!</h1>
+<h1 class="favs-header">Here Are Your Favorite Dogs!</h1>
+{{#if favoriteDogs}}
+    {{#each favoriteDogs}}
+        <section class="card container fav-card" style="width: 27rem;" id="{{id}}">
+            <h1 class="text-dark">{{name}}</h1>
+            <h5 class="text-center">Breed: {{breed}}</h5>
+            <p class="text-center">Rating: {{rating}}</p>
+            <img src="{{url}}" alt="" style="width:auto;" class="mx-1 my-2">
+            <button class="btn btn-danger my-2 custom-remove-button" data-dog_id="{{id}}">remove from favorites</button>
+        </section>
+        <br>  
+    {{/each}}
 
-{{#each favoriteDogs}}
-    <section class="card mx-auto" style="width: 27rem;" id="{{id}}">
-        <h1 class="text-dark">{{name}}</h1>
-        <h5 class="text-center">Breed: {{breed}}</h5>
-        <p class="text-center">Rating: {{rating}}</p>
-        <img src="{{url}}" alt="" style="width:auto;" class="mx-1 my-2">
-        <button class="btn btn-danger my-2 custom-remove-button" data-dog_id="{{id}}">remove from favorites</button>
-    </section>
-    <br>  
-{{/each}}
+{{else}}
+<h1 class="favs-header">You don't have any favorite dogs!</h1>
+{{/if}}
 
 </body>
 
