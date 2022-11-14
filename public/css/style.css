@@ -163,6 +163,10 @@ h6 {
 .fav-dogs-h1{
     text-align: center;
 }
+#favs-checkbox{
+    position: relative;
+    left: 500px;
+}
 @media screen and (max-width: 992px) {
     .mx-auto {
         width: 300px;
