@@ -1,10 +1,10 @@
 <body class="leaderboard-bg">
-<h1>Here Are Your Favorite Dogs!</h1>
+<h1 class="fav-dogs-h1">Here Are Your Favorite Dogs!</h1>
 
 
 {{#if favoriteDogs}}
     {{#each favoriteDogs}}
-        <section class="card container favorites-card"id="{{id}}">
+        <section class="card container" id="{{id}}">
             <h1 class="text-dark">{{name}}</h1>
             <h5 class="text-center">Breed: {{breed}}</h5>
             <p class="text-center">Rating: {{rating}}</p>

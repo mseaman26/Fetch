@@ -157,18 +157,18 @@ h6 {
 .form-label {
   color: white;
 }
+.card {
+    max-width: 500px;
+}
+.fav-dogs-h1{
+    text-align: center;
+}
 /* @media screen and (max-width: 992px) {
     .mx-auto{
         width: 250px;
         height: 250px;
     }
 } */
-.favorites-card{
-    max-width: 400px;
-}
-#favs-checkbox{
-    width: fit-content;
-}
 @media screen and (max-width: 768px) {
 
   .mx-auto {
