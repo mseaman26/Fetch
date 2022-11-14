@@ -166,6 +166,9 @@ h6 {
 .favorites-card{
     max-width: 400px;
 }
+#favs-checkbox{
+    width: fit-content;
+}
 @media screen and (max-width: 768px) {
 
   .mx-auto {
