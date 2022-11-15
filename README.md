@@ -5,6 +5,7 @@
  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
   ## Table of Contents
+  * [Technologies Used](#technologies-used)
   * [Code Snippets](#code-snippets)<br />
   * [Usage](#usage)<br />
   * [Contributing to This Repository](#how-to-contribute-to-this-repository)<br />
@@ -12,6 +13,26 @@
 
   ## Overview of the application
 <img src="./public/assets/Overview.gif">
+
+  ## Technologies Used
+  ### Front end
+  - JavaScript
+  - Web APIs
+  - Fetch
+  - CSS
+  - Bootstrap Framework
+  - Session Storage
+  ### Back End
+  - Node
+  - NPM
+  - Express
+  - MySQL
+  - Sequelize ORM
+  - User Authentication
+  - Handlebars
+  - Bcrypt
+  - Nodemon
+  - Pretty-checkbox
 
   ## Code Snippets
     Here we have the usage of the "Pretty-checkbox.css" library.  This allowed our voting page to have a heart-shaped button for the "add to favorites" functionality
